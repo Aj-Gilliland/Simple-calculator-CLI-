@@ -46,22 +46,17 @@ public class Modula1 {
 
     private static float handleInput(String input) {
         float result = 0.0f;
-
-        // Split the input string based on operators
+        // split the input string based on operator
         String[] equationParts = input.split("\\s*[-+*/]\\s*");
-
         if (equationParts.length != 2) {
             System.out.println("Invalid equation format.");
             return result;
         }
-
         float num1 = Float.parseFloat(equationParts[0]);
         float num2 = Float.parseFloat(equationParts[1]);
-
-        // Determine the operator by turning everything thats not a op into white space
+        // determine the operator by turning everything thats not a op into white space
         char operator = input.replaceAll("[^-+*/]", "").charAt(0);
-
-        // Perform the corresponding operation
+        // the simple operation
         switch (operator) {
             case '+':
                 result = num1 + num2;
@@ -73,19 +68,18 @@ public class Modula1 {
                 result = num1 * num2;
                 break;
             case '/':
-                // Check for division by zero
+                // check for division by zero
                 if (num2 != 0) {
                     result = num1 / num2;
                 } else {
                     System.out.println("Cannot divide by zero.");
-                    result = 123456789.123456789F;
-                    return result; // Early return to avoid further processing
+                    return result;
                 }
                 break;
             default:
                 System.out.println("Invalid operator.");
-                return result; // Early return for invalid operator
+                return result;
         }
-        return result; // Add this return statement for the default case
+        return result;
     }
 }
